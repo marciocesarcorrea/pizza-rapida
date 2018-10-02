@@ -1,10 +1,14 @@
 import React from 'react'
 
-import { Segment, Image, Card, Form, Button, Transition, List, Grid } from 'semantic-ui-react'
+import { Segment, Image, Button, Transition, List, Grid } from 'semantic-ui-react'
 
-import './style.css'
+import CustomCard from '../Components/CustomCard'
+import ListRadioCheck from '../Components/ListRadioCheck'
+
 import logo from '../assets/images/logo.png'
 import delivery from '../assets/images/delivery.gif'
+
+import './style.css'
 
 const tamanhos = [
   {id: 1, nome: 'Pequena', valor: 20.00, tempo: 15},
@@ -41,102 +45,43 @@ class App extends React.Component {
     return (
       <Segment className='root'>
         <Image src={logo} size='small' centered />
-        <Transition visible={!mostraResumo} animation='fade' duration={500}>
-          <Card fluid>
-            <Card.Content>
-              <Card.Header>Tamanho</Card.Header>
-              <Card.Meta>Qual o tamanho de sua fome?</Card.Meta>
-              <Card.Description>
-                <Form>
-                  <Form.Group inline>
-                    {
-                      tamanhos.map((m) => (
-                        <Form.Radio key={m.id} label={`${m.nome} (R$ ${m.valor.toFixed(2)})`} value={m.id} checked={tamanho && tamanho.id === m.id} onChange={() => this.handleChange(m, 'tamanho')} />
-                      ))
-                    }
-                  </Form.Group>
-                </Form>
-              </Card.Description>
-            </Card.Content>
-          </Card>
-        </Transition>
-        <Transition visible={(tamanho && !mostraResumo) ? true : false} animation='fade' duration={500}>
-          <Card fluid>
-          <Card.Content>
-            <Card.Header>Sabores</Card.Header>
-            <Card.Meta>Qual sabor você prefere?</Card.Meta>
-            <Card.Description>
-              <Form>
-                <Form.Group inline>
-                  {
-                    sabores.map((m) => (
-                      <Form.Radio key={m.id} label={m.nome} value={m.id} checked={sabor && sabor.id === m.id} onChange={() => this.handleChange(m, 'sabor')} />
-                    ))
-                  }
-                </Form.Group>
-              </Form>
-            </Card.Description>
-          </Card.Content>
-        </Card>
-        </Transition>
-        <Transition visible={(tamanho && sabor && !mostraResumo) ? true : false} animation='fade' duration={500}>
-          <Card fluid>
-            <Card.Content>
-              <Card.Header>Extras</Card.Header>
-              <Card.Meta>Que tal dar um upgrade nesta pizza?</Card.Meta>
-              <Card.Description>
-                <Form>
-                  <Form.Group inline>
-                    {
-                      extras.map((m) => (
-                        <Form.Checkbox key={m.id} label={m.nome + (m.valor ? ` (R$ ${m.valor.toFixed(2)})` : '')} value={m.id} checked={extra && extra.find((f=>(f.id === m.id)))!==undefined} onChange={() => this.handleChange(m, 'extra')} />
-                      ))
-                    }
-                  </Form.Group>
-                </Form>
-              </Card.Description>
-            </Card.Content>
-          </Card>
-        </Transition>
+        <CustomCard visible={!mostraResumo} header='Tamanho' meta='Qual o tamanho de sua fome?' description={
+          <ListRadioCheck list={tamanhos} type='radio' handleChange={this.handleChange} id='id' label={(o)=>(`${o.nome} (R$ ${o.valor.toFixed(2)})`)} checked={tamanho} name='tamanho' />
+        }/>
+        <CustomCard visible={(tamanho && !mostraResumo) ? true : false} header='Sabores' meta='Qual sabor você prefere?' description={
+          <ListRadioCheck list={sabores} type='radio' handleChange={this.handleChange} id='id' label={(o)=>(o.nome)} checked={sabor} name='sabor' />
+        }/>
+        <CustomCard visible={(tamanho && sabor && !mostraResumo) ? true : false} header='Extras' meta='Que tal dar um upgrade nesta pizza?' description={
+          <ListRadioCheck list={extras} type='check' handleChange={this.handleChange} id='id' label={(o)=>(o.nome + (o.valor ? ` (R$ ${o.valor.toFixed(2)})` : ''))} checked={extra} name='extra' />
+        }/>
         <Transition visible={(tamanho && sabor && extra.length>0 && !mostraResumo) ? true : false} animation='fade' duration={500}>
           <Button color='green' fluid onClick={()=>this.handlePedir()}>Pedir minha pizza</Button>
         </Transition>
-        <Transition visible={mostraResumo} animation='fade' duration={500}>
-          <Card fluid>
-              <Card.Content>
-                <Card.Header>Pronto!</Card.Header>
-                <Card.Meta>{pedidoConfirmado?'Agora é só aguardar!':'Confira como sua pizza ficou!'}</Card.Meta>
-                <Card.Description>
-                  {
-                    pedidoConfirmado ? (<Image src={delivery} size='small' centered />) : (
-                      <List>
-                        <List.Item>
-                          <List.Icon name='check' color='green' />
-                          <List.Content><b>Tamanho:</b> {tamanho && tamanho.nome}</List.Content>
-                        </List.Item>
-                        <List.Item>
-                          <List.Icon name='check' color='green' />
-                          <List.Content><b>Sabor:</b> {sabor && sabor.nome}</List.Content>
-                        </List.Item>
-                        <List.Item>
-                          <List.Icon name='check' color='green' />
-                          <List.Content><b>Extras:</b> {extra.map((m, i, a)=>(m.nome.concat(i+1<a.length ? ((i+1===a.length-1) ? ' e ' : ', ') : '')))}</List.Content>
-                        </List.Item>
-                      </List>
-                    )
-                  }
-                </Card.Description>
-              </Card.Content>
-              <Card.Content extra>
-                <Grid>
-                  <Grid.Row columns={2}>
-                    <Grid.Column><b>Tempo:</b> {(tamanho && (tamanho.tempo || 0)) + (sabor && (sabor.tempo || 0)) + extra.reduce((a, b) => +a + +(b.tempo || 0), 0)} min</Grid.Column>
-                    <Grid.Column textAlign='right'><b>Valor:</b> {((tamanho && (tamanho.valor || 0)) + (sabor && (sabor.valor || 0)) + extra.reduce((a, b) => +a + +(b.valor || 0), 0)).toFixed(2)}</Grid.Column>
-                  </Grid.Row>
-                </Grid>
-              </Card.Content>
-            </Card>
-        </Transition>
+        <CustomCard visible={mostraResumo} header='Pronto!' meta={pedidoConfirmado?'Agora é só aguardar!':'Confira como sua pizza ficou!'} description={
+          pedidoConfirmado ? (<Image src={delivery} size='small' centered />) : (
+            <List>
+              <List.Item>
+                <List.Icon name='check' color='green' />
+                <List.Content><b>Tamanho:</b> {tamanho && tamanho.nome}</List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Icon name='check' color='green' />
+                <List.Content><b>Sabor:</b> {sabor && sabor.nome}</List.Content>
+              </List.Item>
+              <List.Item>
+                <List.Icon name='check' color='green' />
+                <List.Content><b>Extras:</b> {extra.map((m, i, a)=>(m.nome.concat(i+1<a.length ? ((i+1===a.length-1) ? ' e ' : ', ') : '')))}</List.Content>
+              </List.Item>
+            </List>
+          )
+        } extraDesc={
+          <Grid>
+            <Grid.Row columns={2}>
+              <Grid.Column><b>Tempo:</b> {(tamanho && (tamanho.tempo || 0)) + (sabor && (sabor.tempo || 0)) + extra.reduce((a, b) => +a + +(b.tempo || 0), 0)} min</Grid.Column>
+              <Grid.Column textAlign='right'><b>Valor:</b> {((tamanho && (tamanho.valor || 0)) + (sabor && (sabor.valor || 0)) + extra.reduce((a, b) => +a + +(b.valor || 0), 0)).toFixed(2)}</Grid.Column>
+            </Grid.Row>
+          </Grid>
+        }/>
         <Transition visible={mostraResumo} animation='fade' duration={500}>
           <Button color={pedidoConfirmado?'grey':'green'} fluid onClick={()=>this.handleConfirma(pedidoConfirmado, tamanho, sabor, extra)}>{pedidoConfirmado?'Começar um novo!':'Confirmar meu pedido'}</Button>
         </Transition>
