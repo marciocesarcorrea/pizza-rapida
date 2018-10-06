@@ -1,0 +1,27 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "test-production": "SET NODE_ENV=production && npm start",
+    "create-migration": "node ./node_modules/sequelize-auto-migrations/bin/makemigration --name db",
+    "execute-migration": "node ./node_modules/sequelize-auto-migrations/bin/runmigration",
+    "execute-all-seeders": "sequelize db:seed:all"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.3",
+    "cors": "^2.8.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0",
+    "pg": "^7.5.0",
+    "pg-hstore": "^2.3.2",
+    "sequelize": "^4.39.0",
+    "sequelize-auto-migrations": "https://github.com/max10rogerio/sequelize-auto-migrations/archive/master.tar.gz"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "sequelize-cli": "^4.1.1"
+  }
+}

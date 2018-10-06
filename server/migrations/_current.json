@@ -1,0 +1,183 @@
+{
+    "tables": {
+        "Extra": {
+            "tableName": "Extra",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nome": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.STRING"
+                },
+                "valor": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.DECIMAL"
+                },
+                "tempo": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Pizza": {
+            "tableName": "Pizza",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "valor": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.DECIMAL"
+                },
+                "tempo": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "TamanhoId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Tamanho",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "SaborId": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "Sabor",
+                        "key": "id"
+                    },
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        },
+        "Sabor": {
+            "tableName": "Sabor",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nome": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.STRING"
+                },
+                "valor": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.DECIMAL"
+                },
+                "tempo": {
+                    "allowNull": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Tamanho": {
+            "tableName": "Tamanho",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "nome": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.STRING"
+                },
+                "valor": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DECIMAL"
+                },
+                "tempo": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "PizzaExtra": {
+            "tableName": "PizzaExtra",
+            "schema": {
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "ExtraId": {
+                    "primaryKey": true,
+                    "references": {
+                        "model": "Extra",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "PizzaId": {
+                    "primaryKey": true,
+                    "references": {
+                        "model": "Pizza",
+                        "key": "id"
+                    },
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 1
+}

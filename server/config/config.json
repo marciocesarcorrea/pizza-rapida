@@ -1,0 +1,21 @@
+{
+  "development": {
+    "username": "xmuihbdi",
+    "password": "s5y6DEzZubbjfaBHD1JNnvGi0JJFvApK",
+    "database": "xmuihbdi",
+    "host": "stampy.db.elephantsql.com",
+    "port": "5432",
+    "dialect": "postgres"
+  },
+  "test": {
+    "username": "xmuihbdi",
+    "password": "s5y6DEzZubbjfaBHD1JNnvGi0JJFvApK",
+    "database": "xmuihbdi",
+    "host": "stampy.db.elephantsql.com",
+    "port": "5432",
+    "dialect": "postgres"
+  },
+  "production": {
+    "use_env_variable": "DATABASE_URL"
+  }
+}
