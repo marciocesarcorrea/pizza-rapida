@@ -1,0 +1,15 @@
+{
+  "name": "build-pizza",
+  "version": "1.0.0",
+  "description": "Build do projeto",
+  "scripts": {
+    "start": "gulp",
+    "build": "cd client && npm run build"
+  },
+  "dependencies": {
+    "cross-spawn": "^6.0.5",
+    "del": "^3.0.0",
+    "gulp": "^3.0.0",
+    "gulp-sync": "^0.1.4"
+  }
+}

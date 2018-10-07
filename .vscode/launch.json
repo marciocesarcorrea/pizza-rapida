@@ -8,11 +8,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch Program",
-      "program": "${workspaceFolder}/server\\bin\\www",
-      "env": {
-        "NODE_ENV": "production",
-        "DATABASE_URL": "postgres://ddfdnfhlxiuezp:6b16073cb33a173a708681dcf60e35867e39a035d582499231b83fe81d65e89c@ec2-23-23-80-20.compute-1.amazonaws.com:5432/d42aup3ihom15u"
-      }
+      "program": "${workspaceFolder}/server\\bin\\www"
     }
   ]
 }

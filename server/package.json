@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "test-production": "SET NODE_ENV=production && npm start",
     "create-migration": "node ./node_modules/sequelize-auto-migrations/bin/makemigration --name db",
     "execute-migration": "node ./node_modules/sequelize-auto-migrations/bin/runmigration",
-    "execute-all-seeders": "sequelize db:seed:all"
+    "execute-all-seeders": "sequelize db:seed:all",
+    "postinstall": "npm run create-migration && npm run execute-migration && npm run execute-all-seeders"
   },
   "dependencies": {
     "cookie-parser": "~1.4.3",
