@@ -2,5 +2,13 @@
   position: relative;
   top: 50%;
   transform: translateY(-50%);
-  margin: 0 10px !important;
+  margin: 0 auto !important;
+  max-width: 620px;
+}
+@media (max-width: 600px) 
+{
+  .root {
+    margin: 0 10px !important;
+    max-width: auto;
+  }
 }

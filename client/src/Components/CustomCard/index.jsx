@@ -20,7 +20,7 @@ const CustomCard = ({header, meta, description, extraDesc, visible}) => (
 CustomCard.propTypes = {
   header: PropTypes.string.isRequired,
   meta: PropTypes.string,
-  description: PropTypes.element.isRequired,
+  description: PropTypes.element,
   extraDesc: PropTypes.element,
   visible: PropTypes.bool.isRequired
 }
