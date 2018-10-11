@@ -2,10 +2,7 @@ import config from '../../config'
 import axios from 'axios'
 import cloneDeep from 'lodash/cloneDeep'
 import { takeLatest, put } from 'redux-saga/effects'
-import {
-  createAction,
-  handleActions
-} from 'redux-actions'
+import { createAction, handleActions } from 'redux-actions'
 
 export const searchItens = createAction('searchItens/SEARCH')
 export const searchItensError = createAction('searchItens/ERROR')
