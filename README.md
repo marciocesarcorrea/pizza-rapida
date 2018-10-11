@@ -9,15 +9,15 @@ Exemplo de aplicação React desenvolvida com:
 - [expressjs](https://github.com/expressjs/express/)
 - [sequelizejs](https://github.com/sequelize/sequelize)
 
-O projeto foi publicado em https://pizza-uds.herokuapp.com e caso queira testar o último build basta clicar no botão abaixo para criar uma nova aplicação.
+O projeto foi publicado em https://pizza-rapida.herokuapp.com e caso queira testar o último build basta clicar no botão abaixo para criar uma nova aplicação.
 
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/marciocesarcorrea/uds-pizza/tree/master/server)
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/marciocesarcorrea/pizza-rapida/tree/master/server)
 
 
 ## Para testes locais
-1. Clonar o repositório `https://github.com/marciocesarcorrea/uds-pizza.git`
-2. Entre na pasta `uds-pizza\server` e `uds-pizza\client` e execute o comando `npm install` em cada uma delas
-4. Antes de rodar o servidor será necessário configurar a conexão com o banco de dados no arquivo `config.json` da pasta `uds-pizza\server\config`:
+1. Clonar o repositório `https://github.com/marciocesarcorrea/pizza-rapida.git`
+2. Entre na pasta `pizza-rapida\server` e `pizza-rapida\client` e execute o comando `npm install` em cada uma delas
+4. Antes de rodar o servidor será necessário configurar a conexão com o banco de dados no arquivo `config.json` da pasta `pizza-rapida\server\config`:
 ```js
 "development": {
   "username": "USUARIO",
@@ -30,12 +30,12 @@ O projeto foi publicado em https://pizza-uds.herokuapp.com e caso queira testar 
 ```
 `Atenção: Foram adicionadas algumas dependências do banco PostgreSQL no servidor, caso o teste seja feito em outro dialeto, será necessário altera-las`
 
-5. Execute o comando na pasta `uds-pizza\server` para que as tabelas do banco sejam criadas e populadas:
+5. Execute o comando na pasta `pizza-rapida\server` para que as tabelas do banco sejam criadas e populadas:
 ```js
 $ npm postinstall
 ```
-6. Para rodar o servidor execute o comando `npm start` na pasta `uds-pizza\server`
-7. Para rodar o cliente react execute o comando `npm start` na pasta `uds-pizza\client`
+6. Para rodar o servidor execute o comando `npm start` na pasta `pizza-rapida\server`
+7. Para rodar o cliente react execute o comando `npm start` na pasta `pizza-rapida\client`
 
 ## Contribuição
 - [Max Rogério](https://github.com/max10rogerio/) pela correção no pacote do [sequelize-auto-migrations](https://github.com/max10rogerio/sequelize-auto-migrations/)
