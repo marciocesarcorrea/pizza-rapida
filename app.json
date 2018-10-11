@@ -1,0 +1,7 @@
+{
+  "name": "Pizza Rápida",
+  "description": "Exemplo de aplicação feita com create-react-app + redux + sagas + expressJs + sequelizeJs",
+  "repository": "https://github.com/marciocesarcorrea/uds-pizza/tree/master/server",
+  "logo": "https://pizza-uds.herokuapp.com/icons/icon-128x128.png",
+  "keywords": ["Pizza", "create-react-app","redux", "sagas","expressJs","sequelizeJs"]
+}
