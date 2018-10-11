@@ -1,7 +1,7 @@
 {
-  "name": "server",
-  "version": "0.0.0",
-  "private": true,
+  "name": "pizza-rapida",
+  "version": "1.0.0",
+  "description": "Pizza rapida",
   "scripts": {
     "start": "node ./bin/www",
     "create-migration": "node ./node_modules/sequelize-auto-migrations/bin/makemigration --name db",
