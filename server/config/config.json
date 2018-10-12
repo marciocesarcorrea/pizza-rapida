@@ -7,6 +7,14 @@
     "port": "5432",
     "dialect": "postgres"
   },
+  "test": {
+    "username": "bxhnkgnu",
+    "password": "TzJQsQHVi-yEQhdML0PDjX5C4KQRnQCR",
+    "database": "bxhnkgnu",
+    "host": "elmer.db.elephantsql.com",
+    "port": "5432",
+    "dialect": "postgres"
+  },
   "production": {
     "use_env_variable": "DATABASE_URL"
   }
