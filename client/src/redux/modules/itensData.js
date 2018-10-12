@@ -23,7 +23,7 @@ const INITIAL_STATE = {
   error: undefined
 }
 export default handleActions({
-  [searchItens]: () => ({...INITIAL_STATE, loading: true}),
+  [searchItens]: () => ({...INITIAL_STATE, loading: true, mostraResumo: false}),
   [searchItensDone]: (state, { payload }) => ({...INITIAL_STATE, ...payload}),
   [searchItensError]: (state, { payload }) => ({...INITIAL_STATE, error: payload}),
   [setItem]: (state, {payload}) => {
@@ -35,11 +35,12 @@ export default handleActions({
     } else newState[payload.target] = payload.t
     return newState
   },
-  [setResumo]: (state) => {
+  [setResumo]: (state, {payload}) => {
     let newState = cloneDeep(state)
-    newState.mostraResumo = true
+    newState.mostraResumo = payload
     return newState
   }
+
 }, INITIAL_STATE)
 
 function loadItens () {

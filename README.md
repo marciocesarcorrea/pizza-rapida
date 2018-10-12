@@ -9,10 +9,7 @@ Exemplo de aplicação React desenvolvida com:
 - [expressjs](https://github.com/expressjs/express/)
 - [sequelizejs](https://github.com/sequelize/sequelize)
 
-O projeto foi publicado em https://pizza-rapida.herokuapp.com e caso queira testar o último build basta clicar no botão abaixo para criar uma nova aplicação.
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/marciocesarcorrea/pizza-rapida/tree/master/server)
-
+O projeto foi publicado em https://pizza-rapida.herokuapp.com.
 
 ## Para testes locais
 1. Clonar o repositório `https://github.com/marciocesarcorrea/pizza-rapida.git`
@@ -28,7 +25,7 @@ O projeto foi publicado em https://pizza-rapida.herokuapp.com e caso queira test
   "dialect": "DIALETO"
 }
 ```
-`Atenção: Foram adicionadas algumas dependências do banco PostgreSQL no servidor, caso o teste seja feito em outro dialeto, será necessário altera-las`
+**Atenção:** Foram adicionadas algumas dependências do banco PostgreSQL no servidor, caso o teste seja feito em outro dialeto, será necessário altera-las
 
 5. Execute o comando na pasta `pizza-rapida\server` para que as tabelas do banco sejam criadas e populadas:
 ```js

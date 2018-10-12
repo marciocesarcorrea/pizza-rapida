@@ -20,7 +20,7 @@ class App extends React.Component {
   componentDidMount = () => this.props.searchItens()
 
   handleChange = (t, target) => this.props.setItem({t, target})
-  handlePedir = () => this.props.setResumo()
+  handlePedir = () => this.props.setResumo(true)
   handleConfirma = (confirmado, tamanho, sabor, extra) => {
     if(!confirmado) this.props.fazPedido({tamanho,sabor,extra})
     else this.props.searchItens()
@@ -44,7 +44,7 @@ class App extends React.Component {
           }/>
           <CustomCard visible={(tamanho && sabor && !mostraResumo) ? true : false} header='Extras' meta='Que tal dar um upgrade nesta pizza?' description={
             <ListRadioCheck list={extras} type='check' handleChange={this.handleChange} id='id'
-              label={(o)=>(o.nome + (o.valor ? ` (R$ ${parseFloat(o.valor).toFixed(2)})` : ''))}
+              label={(o)=>(o.nome + (o.valor > 0 ? ` (R$ ${parseFloat(o.valor).toFixed(2)})` : ''))}
               checked={extra} name='extra'
             />
           }/>
